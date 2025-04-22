@@ -24,7 +24,7 @@
 */
 
 #include "precompiled.h"
-#pragma hdrstop
+
 
 #include "DeviceManager.h"
 

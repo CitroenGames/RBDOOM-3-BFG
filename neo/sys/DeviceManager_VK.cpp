@@ -25,7 +25,6 @@
 
 // SRS - Can now enable PCH here due to updated nvrhi CMakeLists.txt that makes Vulkan-Headers private
 #include <precompiled.h>
-#pragma hdrstop
 
 #include <string>
 #include <queue>

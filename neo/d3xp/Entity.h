@@ -362,13 +362,13 @@ public:
 	// InterpolatePhysics actually calls evaluate, this version doesn't.
 	void					InterpolatePhysicsOnly( const float fraction, bool updateTeam = false );
 
-	// set the origin of the physics object (relative to bindMaster if not NULL)
+	// set the origin of the physics object (relative to bindMaster if not nullptr)
 	void					SetOrigin( const idVec3& org );
 
-	// set the axis of the physics object (relative to bindMaster if not NULL)
+	// set the axis of the physics object (relative to bindMaster if not nullptr)
 	void					SetAxis( const idMat3& axis );
 
-	// use angles to set the axis of the physics object (relative to bindMaster if not NULL)
+	// use angles to set the axis of the physics object (relative to bindMaster if not nullptr)
 	void					SetAngles( const idAngles& ang );
 
 	// get the floor position underneath the physics object
@@ -444,7 +444,7 @@ public:
 
 	// targets
 	void					FindTargets();
-	void					RemoveNullTargets();
+	void					RemovenullptrTargets();
 	void					ActivateTargets( idEntity* activator ) const;
 
 	// misc
@@ -551,7 +551,7 @@ protected:
 private:
 	idPhysics_Static		defaultPhysicsObj;					// default physics object
 	idPhysics* 				physics;							// physics used for this entity
-	idEntity* 				bindMaster;							// entity bound to if unequal NULL
+	idEntity* 				bindMaster;							// entity bound to if unequal nullptr
 	jointHandle_t			bindJoint;							// joint bound to if unequal INVALID_JOINT
 	int						bindBody;							// body bound to if unequal -1
 	idEntity* 				teamMaster;							// master of the physics team

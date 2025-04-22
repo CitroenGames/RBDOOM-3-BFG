@@ -22,7 +22,7 @@
 */
 
 #include "precompiled.h"
-#pragma hdrstop
+
 
 #include "RenderPass.h"
 #include "Passes/CommonPasses.h"

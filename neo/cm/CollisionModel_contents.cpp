@@ -35,7 +35,7 @@ If you have questions concerning this license or the applicable additional terms
 */
 
 #include "precompiled.h"
-#pragma hdrstop
+
 
 #include "CollisionModel_local.h"
 
@@ -457,7 +457,7 @@ cm_node_t* idCollisionModelManagerLocal::PointNode( const idVec3& p, cm_model_t*
 			node = node->children[1];
 		}
 
-		assert( node != NULL );
+		assert( node != nullptr );
 	}
 	return node;
 }
@@ -567,7 +567,7 @@ int idCollisionModelManagerLocal::ContentsTrm( trace_t* results, const idVec3& s
 	tw.trace.fraction = 1.0f;
 	tw.trace.c.contents = 0;
 	tw.trace.c.type = CONTACT_NONE;
-	tw.trace.c.material = NULL;
+	tw.trace.c.material = nullptr;
 	tw.trace.c.id = 0;
 	tw.contents = contentMask;
 	tw.isConvex = true;

@@ -32,7 +32,7 @@ DG: The file was renamed from zip.c to zip.cpp so we can use C++ functions from 
 
 // DG: add the precompiled.h beast..
 #include "precompiled.h"
-#pragma hdrstop
+
 // DG end
 
 #if 0 // we don't really want system includes here

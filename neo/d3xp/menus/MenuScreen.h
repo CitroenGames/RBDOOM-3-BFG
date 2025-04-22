@@ -85,9 +85,9 @@ public:
 	static const leaderboardFilterMode_t DEFAULT_LEADERBOARD_FILTER = LEADERBOARD_FILTER_OVERALL;
 
 	idLBCache() :
-		def( NULL ),
+		def( nullptr ),
 		filter( DEFAULT_LEADERBOARD_FILTER ),
-		pendingDef( NULL ),
+		pendingDef( nullptr ),
 		pendingFilter( DEFAULT_LEADERBOARD_FILTER ),
 		requestingRows( false ),
 		loadingNewLeaderboard( false ),
@@ -300,7 +300,7 @@ class idMenuScreen_PDA_VideoDisks : public idMenuScreen
 {
 public:
 	idMenuScreen_PDA_VideoDisks() :
-		activeVideo( NULL )
+		activeVideo( nullptr )
 	{
 	}
 
@@ -319,7 +319,7 @@ public:
 	void						SelectedVideoToPlay( int index );
 	void						ClearActiveVideo()
 	{
-		activeVideo = NULL;
+		activeVideo = nullptr;
 	}
 	const idDeclVideo* 			GetActiveVideo()
 	{
@@ -368,8 +368,8 @@ class idMenuScreen_Shell_Root : public idMenuScreen
 {
 public:
 	idMenuScreen_Shell_Root() :
-		options( NULL ),
-		helpWidget( NULL )
+		options( nullptr ),
+		helpWidget( nullptr )
 	{
 	}
 	virtual void				Initialize( idMenuHandler* data );
@@ -400,7 +400,7 @@ class idMenuScreen_Shell_Pause : public idMenuScreen
 {
 public:
 	idMenuScreen_Shell_Pause() :
-		options( NULL ),
+		options( nullptr ),
 		isMpPause( false )
 	{
 	}
@@ -428,12 +428,12 @@ class idMenuScreen_Shell_PressStart : public idMenuScreen
 {
 public:
 	idMenuScreen_Shell_PressStart() :
-		startButton( NULL ),
-		options( NULL ),
-		itemList( NULL ),
-		doomCover( NULL ),
-		doom2Cover( NULL ),
-		doom3Cover( NULL )
+		startButton( nullptr ),
+		options( nullptr ),
+		itemList( nullptr ),
+		doomCover( nullptr ),
+		doom2Cover( nullptr ),
+		doom3Cover( nullptr )
 	{
 	}
 	virtual void				Initialize( idMenuHandler* data );
@@ -459,12 +459,12 @@ class idMenuScreen_Shell_GameSelect : public idMenuScreen
 {
 public:
 	idMenuScreen_Shell_GameSelect() :
-		startButton( NULL ),
-		options( NULL ),
-		itemList( NULL ),
-		doomCover( NULL ),
-		doom2Cover( NULL ),
-		doom3Cover( NULL )
+		startButton( nullptr ),
+		options( nullptr ),
+		itemList( nullptr ),
+		doomCover( nullptr ),
+		doom2Cover( nullptr ),
+		doom3Cover( nullptr )
 	{
 	}
 	virtual void				Initialize( idMenuHandler* data );
@@ -492,8 +492,8 @@ class idMenuScreen_Shell_Singleplayer : public idMenuScreen
 public:
 	idMenuScreen_Shell_Singleplayer() :
 		canContinue( false ),
-		options( NULL ),
-		btnBack( NULL )
+		options( nullptr ),
+		btnBack( nullptr )
 	{
 	}
 	virtual void				Initialize( idMenuHandler* data );
@@ -522,8 +522,8 @@ class idMenuScreen_Shell_Settings : public idMenuScreen
 {
 public:
 	idMenuScreen_Shell_Settings() :
-		options( NULL ),
-		btnBack( NULL )
+		options( nullptr ),
+		btnBack( nullptr )
 	{
 	}
 	virtual void				Initialize( idMenuHandler* data );
@@ -564,7 +564,7 @@ class idMenuScreen_Shell_Credits : public idMenuScreen
 {
 public:
 	idMenuScreen_Shell_Credits() :
-		btnBack( NULL ),
+		btnBack( nullptr ),
 		creditIndex( 0 )
 	{
 	}
@@ -592,8 +592,8 @@ class idMenuScreen_Shell_Resolution : public idMenuScreen
 {
 public:
 	idMenuScreen_Shell_Resolution() :
-		options( NULL ),
-		btnBack( NULL )
+		options( nullptr ),
+		btnBack( nullptr )
 	{
 	}
 	virtual void				Initialize( idMenuHandler* data );
@@ -651,8 +651,8 @@ class idMenuScreen_Shell_Difficulty : public idMenuScreen
 public:
 	idMenuScreen_Shell_Difficulty() :
 		nightmareUnlocked( false ),
-		options( NULL ),
-		btnBack( NULL )
+		options( nullptr ),
+		btnBack( nullptr )
 	{
 	}
 	virtual void				Initialize( idMenuHandler* data );
@@ -675,8 +675,8 @@ class idMenuScreen_Shell_Playstation : public idMenuScreen
 {
 public:
 	idMenuScreen_Shell_Playstation() :
-		options( NULL ),
-		btnBack( NULL )
+		options( nullptr ),
+		btnBack( nullptr )
 	{
 	}
 	virtual void				Initialize( idMenuHandler* data );
@@ -698,8 +698,8 @@ class idMenuScreen_Shell_ModeSelect : public idMenuScreen
 {
 public:
 	idMenuScreen_Shell_ModeSelect() :
-		options( NULL ),
-		btnBack( NULL )
+		options( nullptr ),
+		btnBack( nullptr )
 	{
 	}
 	virtual void				Initialize( idMenuHandler* data );
@@ -721,8 +721,8 @@ class idMenuScreen_Shell_GameBrowser : public idMenuScreen
 {
 public:
 	idMenuScreen_Shell_GameBrowser() :
-		listWidget( NULL ),
-		btnBack( NULL )
+		listWidget( nullptr ),
+		btnBack( nullptr )
 	{
 	}
 
@@ -749,14 +749,14 @@ class idMenuScreen_Shell_Leaderboards : public idMenuScreen
 {
 public:
 	idMenuScreen_Shell_Leaderboards() :
-		options( NULL ),
-		btnBack( NULL ),
-		btnPrev( NULL ),
-		btnNext( NULL ),
-		btnPageDwn( NULL ),
-		btnPageUp( NULL ),
-		lbCache( NULL ),
-		lbHeading( NULL ),
+		options( nullptr ),
+		btnBack( nullptr ),
+		btnPrev( nullptr ),
+		btnNext( nullptr ),
+		btnPageDwn( nullptr ),
+		btnPageUp( nullptr ),
+		lbCache( nullptr ),
+		lbHeading( nullptr ),
 		lbIndex( 0 ),
 		refreshLeaderboard( false ),
 		refreshWhenMasterIsOnline( false )
@@ -782,7 +782,7 @@ protected:
 
 	struct	doomLeaderboard_t
 	{
-		doomLeaderboard_t() : lb( NULL ) { }
+		doomLeaderboard_t() : lb( nullptr ) { }
 		doomLeaderboard_t( const leaderboardDefinition_t* _lb, idStr _name )
 		{
 			lb = _lb;
@@ -816,11 +816,11 @@ class idMenuScreen_Shell_Bindings : public idMenuScreen
 {
 public:
 	idMenuScreen_Shell_Bindings() :
-		options( NULL ),
-		restoreDefault( NULL ),
-		blinder( NULL ),
-		txtBlinder( NULL ),
-		btnBack( NULL ),
+		options( nullptr ),
+		restoreDefault( nullptr ),
+		blinder( nullptr ),
+		txtBlinder( nullptr ),
+		btnBack( nullptr ),
 		bindingsChanged( false )
 	{
 	}
@@ -877,8 +877,8 @@ public:
 	};
 
 	idMenuScreen_Shell_Dev() :
-		options( NULL ),
-		btnBack( NULL )
+		options( nullptr ),
+		btnBack( nullptr )
 	{
 	}
 	virtual void				Initialize( idMenuHandler* data );
@@ -904,8 +904,8 @@ class idMenuScreen_Shell_NewGame : public idMenuScreen
 {
 public:
 	idMenuScreen_Shell_NewGame() :
-		options( NULL ),
-		btnBack( NULL )
+		options( nullptr ),
+		btnBack( nullptr )
 	{
 	}
 	virtual void				Initialize( idMenuHandler* data );
@@ -927,10 +927,10 @@ class idMenuScreen_Shell_Load : public idMenuScreen
 {
 public:
 	idMenuScreen_Shell_Load() :
-		options( NULL ),
-		saveInfo( NULL ),
-		btnBack( NULL ),
-		btnDelete( NULL )
+		options( nullptr ),
+		saveInfo( nullptr ),
+		btnBack( nullptr ),
+		btnDelete( nullptr )
 	{
 	}
 	virtual void				Initialize( idMenuHandler* data );
@@ -965,10 +965,10 @@ class idMenuScreen_Shell_Save : public idMenuScreen
 {
 public:
 	idMenuScreen_Shell_Save() :
-		btnBack( NULL ),
-		options( NULL ),
-		saveInfo( NULL ),
-		btnDelete( NULL )
+		btnBack( nullptr ),
+		options( nullptr ),
+		saveInfo( nullptr ),
+		btnDelete( nullptr )
 	{
 	}
 	virtual void				Initialize( idMenuHandler* data );
@@ -1048,8 +1048,8 @@ public:
 	};
 
 	idMenuScreen_Shell_GameOptions() :
-		options( NULL ),
-		btnBack( NULL )
+		options( nullptr ),
+		btnBack( nullptr )
 	{
 	}
 	virtual void				Initialize( idMenuHandler* data );
@@ -1128,8 +1128,8 @@ public:
 	};
 
 	idMenuScreen_Shell_MatchSettings() :
-		options( NULL ),
-		btnBack( NULL )
+		options( nullptr ),
+		btnBack( nullptr )
 	{
 	}
 	virtual void				Initialize( idMenuHandler* data );
@@ -1193,8 +1193,8 @@ public:
 	};
 
 	idMenuScreen_Shell_Controls() :
-		options( NULL ),
-		btnBack( NULL )
+		options( nullptr ),
+		btnBack( nullptr )
 	{
 	}
 	virtual void				Initialize( idMenuHandler* data );
@@ -1262,8 +1262,8 @@ public:
 	};
 
 	idMenuScreen_Shell_Gamepad() :
-		options( NULL ),
-		btnBack( NULL )
+		options( nullptr ),
+		btnBack( nullptr )
 	{
 	}
 	virtual void				Initialize( idMenuHandler* data );
@@ -1325,8 +1325,8 @@ public:
 	};
 
 	idMenuScreen_Shell_ControllerLayout() :
-		options( NULL ),
-		btnBack( NULL )
+		options( nullptr ),
+		btnBack( nullptr )
 	{
 	}
 	virtual void				Initialize( idMenuHandler* data );
@@ -1420,8 +1420,8 @@ public:
 	};
 
 	idMenuScreen_Shell_SystemOptions() :
-		options( NULL ),
-		btnBack( NULL )
+		options( nullptr ),
+		btnBack( nullptr )
 	{
 	}
 	virtual void				Initialize( idMenuHandler* data );
@@ -1488,10 +1488,10 @@ public:
 	};
 
 	idMenuScreen_Shell_Stereoscopics() :
-		options( NULL ),
-		btnBack( NULL ),
-		leftEyeMat( NULL ),
-		rightEyeMat( NULL )
+		options( nullptr ),
+		btnBack( nullptr ),
+		leftEyeMat( nullptr ),
+		rightEyeMat( nullptr )
 	{
 	}
 	virtual void				Initialize( idMenuHandler* data );
@@ -1521,9 +1521,9 @@ public:
 		isHost( false ),
 		isPeer( false ),
 		inParty( false ),
-		options( NULL ),
-		lobby( NULL ),
-		btnBack( NULL )
+		options( nullptr ),
+		lobby( nullptr ),
+		btnBack( nullptr )
 	{
 	}
 
@@ -1564,9 +1564,9 @@ public:
 		isHost( false ),
 		isPeer( false ),
 		privateGameLobby( true ),
-		options( NULL ),
-		lobby( NULL ),
-		btnBack( NULL )
+		options( nullptr ),
+		lobby( nullptr ),
+		btnBack( nullptr )
 	{
 	}
 
@@ -1604,57 +1604,57 @@ class idMenuScreen_HUD : public idMenuScreen
 public:
 
 	idMenuScreen_HUD() :
-		weaponInfo( NULL ),
-		playerInfo( NULL ),
-		stamina( NULL ),
-		weaponName( NULL ),
-		weaponPills( NULL ),
-		downloadPda( NULL ),
-		downloadVideo( NULL ),
-		tipInfo( NULL ),
-		mpChat( NULL ),
-		mpWeapons( NULL ),
-		healthBorder( NULL ),
-		healthPulse( NULL ),
-		armorFrame( NULL ),
-		security( NULL ),
-		newPDADownload( NULL ),
-		newVideoDownload( NULL ),
-		newPDA( NULL ),
-		newVideo( NULL ),
-		audioLog( NULL ),
-		communication( NULL ),
-		oxygen( NULL ),
-		objective( NULL ),
-		objectiveComplete( NULL ),
-		ammoInfo( NULL ),
-		weaponImg( NULL ),
-		newWeapon( NULL ),
-		pickupInfo( NULL ),
-		talkCursor( NULL ),
-		combatCursor( NULL ),
-		grabberCursor( NULL ),
-		bsInfo( NULL ),
-		soulcubeInfo( NULL ),
-		newItem( NULL ),
-		respawnMessage( NULL ),
-		flashlight( NULL ),
-		mpChatObject( NULL ),
-		mpConnection( NULL ),
-		mpInfo( NULL ),
-		mpHitInfo( NULL ),
-		locationName( NULL ),
-		securityText( NULL ),
-		newPDAName( NULL ),
-		newPDAHeading( NULL ),
-		newVideoHeading( NULL ),
-		mpMessage( NULL ),
-		mpTime( NULL ),
+		weaponInfo( nullptr ),
+		playerInfo( nullptr ),
+		stamina( nullptr ),
+		weaponName( nullptr ),
+		weaponPills( nullptr ),
+		downloadPda( nullptr ),
+		downloadVideo( nullptr ),
+		tipInfo( nullptr ),
+		mpChat( nullptr ),
+		mpWeapons( nullptr ),
+		healthBorder( nullptr ),
+		healthPulse( nullptr ),
+		armorFrame( nullptr ),
+		security( nullptr ),
+		newPDADownload( nullptr ),
+		newVideoDownload( nullptr ),
+		newPDA( nullptr ),
+		newVideo( nullptr ),
+		audioLog( nullptr ),
+		communication( nullptr ),
+		oxygen( nullptr ),
+		objective( nullptr ),
+		objectiveComplete( nullptr ),
+		ammoInfo( nullptr ),
+		weaponImg( nullptr ),
+		newWeapon( nullptr ),
+		pickupInfo( nullptr ),
+		talkCursor( nullptr ),
+		combatCursor( nullptr ),
+		grabberCursor( nullptr ),
+		bsInfo( nullptr ),
+		soulcubeInfo( nullptr ),
+		newItem( nullptr ),
+		respawnMessage( nullptr ),
+		flashlight( nullptr ),
+		mpChatObject( nullptr ),
+		mpConnection( nullptr ),
+		mpInfo( nullptr ),
+		mpHitInfo( nullptr ),
+		locationName( nullptr ),
+		securityText( nullptr ),
+		newPDAName( nullptr ),
+		newPDAHeading( nullptr ),
+		newVideoHeading( nullptr ),
+		mpMessage( nullptr ),
+		mpTime( nullptr ),
 		audioLogPrevTime( 0 ),
 		commPrevTime( 0 ),
 		oxygenComm( false ),
 		inVaccuum( false ),
-		objScreenshot( NULL ),
+		objScreenshot( nullptr ),
 		cursorState( CURSOR_NONE ),
 		cursorInCombat( 0 ),
 		cursorTalking( 0 ),
@@ -1805,7 +1805,7 @@ class idMenuScreen_Scoreboard : public idMenuScreen
 public:
 
 	idMenuScreen_Scoreboard() :
-		playerList( NULL )
+		playerList( nullptr )
 	{
 
 	}
@@ -1860,7 +1860,7 @@ Otherwise brings up the invite friends system menu.
 inline void InvitePartyOrFriends()
 {
 	const idLocalUser* const user = session->GetSignInManager().GetMasterLocalUser();
-	if( user != NULL && user->IsInParty() && user->GetPartyCount() > 1 && !session->IsPlatformPartyInLobby() )
+	if( user != nullptr && user->IsInParty() && user->GetPartyCount() > 1 && !session->IsPlatformPartyInLobby() )
 	{
 		session->InviteParty();
 	}

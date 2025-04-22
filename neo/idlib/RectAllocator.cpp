@@ -27,7 +27,7 @@ If you have questions concerning this license or the applicable additional terms
 ===========================================================================
 */
 #include "precompiled.h"
-#pragma hdrstop
+
 
 #include "TileMap.h"
 #include "../libs/binpack2d/binpack2d.h"

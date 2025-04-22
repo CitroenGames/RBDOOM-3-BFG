@@ -29,7 +29,7 @@ If you have questions concerning this license or the applicable additional terms
 */
 
 #include "precompiled.h"
-#pragma hdrstop
+
 
 #include "Game_local.h"
 
@@ -47,11 +47,11 @@ const idEventDef EV_Light_SetLightParm( "setLightParm", "df" );
 const idEventDef EV_Light_SetLightParms( "setLightParms", "ffff" );
 const idEventDef EV_Light_SetRadiusXYZ( "setRadiusXYZ", "fff" );
 const idEventDef EV_Light_SetRadius( "setRadius", "f" );
-const idEventDef EV_Light_On( "On", NULL );
-const idEventDef EV_Light_Off( "Off", NULL );
+const idEventDef EV_Light_On( "On", nullptr );
+const idEventDef EV_Light_Off( "Off", nullptr );
 const idEventDef EV_Light_FadeOut( "fadeOutLight", "f" );
 const idEventDef EV_Light_FadeIn( "fadeInLight", "f" );
-const idEventDef EV_Light_UpdateModelTarget( "<updateModelTarget>", NULL ); // RB
+const idEventDef EV_Light_UpdateModelTarget( "<updateModelTarget>", nullptr ); // RB
 
 CLASS_DECLARATION( idEntity, idLight )
 EVENT( EV_Light_SetShader,		idLight::Event_SetShader )
@@ -194,7 +194,7 @@ void idGameEdit::ParseSpawnArgsToRenderLight( const idDict* args, renderLight_t*
 
 	args->GetString( "texture", "lights/squarelight1", &texture );
 
-	// allow this to be NULL
+	// allow this to be nullptr
 	renderLight->shader = declManager->FindMaterial( texture, false );
 }
 
@@ -222,7 +222,7 @@ void idLight::UpdateChangeableSpawnArgs( const idDict* source )
 	gameEdit->ParseSpawnArgsToRefSound( source ? source : &spawnArgs, &refSound );
 	if( refSound.shader && !refSound.waitfortrigger )
 	{
-		StartSoundShader( refSound.shader, SND_CHANNEL_ANY, 0, false, NULL );
+		StartSoundShader( refSound.shader, SND_CHANNEL_ANY, 0, false, nullptr );
 	}
 
 	gameEdit->ParseSpawnArgsToRenderLight( source ? source : &spawnArgs, &renderLight );
@@ -232,8 +232,8 @@ void idLight::UpdateChangeableSpawnArgs( const idDict* source )
 	GetPhysics()->SetAxis( renderLight.axis );
 
 	// link func_static modelTarget
-	modelTarget = NULL;
-	const char* target = NULL;
+	modelTarget = nullptr;
+	const char* target = nullptr;
 	if( source )
 	{
 		target = source->GetString( "modelTarget" );
@@ -243,7 +243,7 @@ void idLight::UpdateChangeableSpawnArgs( const idDict* source )
 		target = spawnArgs.GetString( "modelTarget" );
 	}
 
-	if( target != NULL && target[0] != '\0' )
+	if( target != nullptr && target[0] != '\0' )
 	{
 		PostEventMS( &EV_Light_UpdateModelTarget, 0 );
 	}
@@ -271,7 +271,7 @@ idLight::idLight():
 	breakOnTrigger		= false;
 	count				= 0;
 	triggercount		= 0;
-	lightParent			= NULL;
+	lightParent			= nullptr;
 	fadeFrom.Set( 1, 1, 1, 1 );
 	fadeTo.Set( 1, 1, 1, 1 );
 	fadeStart			= 0;
@@ -285,7 +285,7 @@ idLight::idLight():
 
 	lightStyleState.Reset();
 
-	modelTarget			= NULL;
+	modelTarget			= nullptr;
 // RB end
 }
 
@@ -418,7 +418,7 @@ void idLight::Spawn()
 	}
 
 	// make sure the demonic shader is cached
-	if( spawnArgs.GetString( "mat_demonic", NULL, &demonic_shader ) )
+	if( spawnArgs.GetString( "mat_demonic", nullptr, &demonic_shader ) )
 	{
 		declManager->FindType( DECL_MATERIAL, demonic_shader );
 	}
@@ -539,9 +539,9 @@ void idLight::Spawn()
 	}
 
 	// RB: link func_static modelTarget
-	//modelTarget = NULL;
+	//modelTarget = nullptr;
 	const char* target = spawnArgs.GetString( "modelTarget" );
-	if( target != NULL && target[0] != '\0' )
+	if( target != nullptr && target[0] != '\0' )
 	{
 		PostEventMS( &EV_Light_UpdateModelTarget, 0 );
 	}
@@ -654,7 +654,7 @@ idLight::SetShader
 */
 void idLight::SetShader( const char* shadername )
 {
-	// allow this to be NULL
+	// allow this to be nullptr
 	renderLight.shader = declManager->FindMaterial( shadername, false );
 	PresentLightDefChange();
 }
@@ -745,7 +745,7 @@ void idLight::On()
 	renderLight.shaderParms[ SHADERPARM_TIMEOFFSET ] = -MS2SEC( gameLocal.time );
 	if( ( soundWasPlaying || refSound.waitfortrigger ) && refSound.shader )
 	{
-		StartSoundShader( refSound.shader, SND_CHANNEL_ANY, 0, false, NULL );
+		StartSoundShader( refSound.shader, SND_CHANNEL_ANY, 0, false, nullptr );
 		soundWasPlaying = false;
 	}
 	SetLightLevel();
@@ -850,7 +850,7 @@ void idLight::BecomeBroken( idEntity* activator )
 
 	if( common->IsServer() )
 	{
-		ServerSendEvent( EVENT_BECOMEBROKEN, NULL, true );
+		ServerSendEvent( EVENT_BECOMEBROKEN, nullptr, true );
 
 		if( spawnArgs.GetString( "def_damage", "", &damageDefName ) )
 		{
@@ -871,7 +871,7 @@ void idLight::BecomeBroken( idEntity* activator )
 
 	// if the light has a sound, either start the alternate (broken) sound, or stop the sound
 	const char* parm = spawnArgs.GetString( "snd_broken" );
-	if( refSound.shader || ( parm != NULL && *parm != '\0' ) )
+	if( refSound.shader || ( parm != nullptr && *parm != '\0' ) )
 	{
 		StopSound( SND_CHANNEL_ANY, false );
 		const idSoundShader* alternate = refSound.shader ? refSound.shader->GetAltSound() : declManager->FindSound( parm );
@@ -883,7 +883,7 @@ void idLight::BecomeBroken( idEntity* activator )
 	}
 
 	parm = spawnArgs.GetString( "mtr_broken" );
-	if( parm != NULL && *parm != '\0' )
+	if( parm != nullptr && *parm != '\0' )
 	{
 		SetShader( parm );
 	}
@@ -1081,7 +1081,7 @@ void idLight::SharedThink()
 		{
 			lightStyleState.dl_oldframe = ( lightStyleState.dl_oldframe ) % stringlength;
 			//if (cent->dl_oldframe < 3 && cent->dl_sound) { // < 3 so if an alarm comes back into the pvs it will only start a sound if it's going to be closely synced with the light, otherwise wait till the next cycle
-			//	engine->S_StartSound(NULL, cent->currentState.number, CHAN_AUTO, cgs.gameSounds[cent->dl_sound]);
+			//	engine->S_StartSound(nullptr, cent->currentState.number, CHAN_AUTO, cgs.gameSounds[cent->dl_sound]);
 			//}
 		}
 
@@ -1396,7 +1396,7 @@ void idLight::Event_SetSoundHandles()
 	for( i = 0; i < targets.Num(); i++ )
 	{
 		targetEnt = targets[ i ].GetEntity();
-		if( targetEnt != NULL && targetEnt->IsType( idLight::Type ) )
+		if( targetEnt != nullptr && targetEnt->IsType( idLight::Type ) )
 		{
 			idLight*	light = static_cast<idLight*>( targetEnt );
 			light->lightParent = this;
@@ -1568,7 +1568,7 @@ bool idLight::ClientReceiveEvent( int event, int time, const idBitMsg& msg )
 	{
 		case EVENT_BECOMEBROKEN:
 		{
-			BecomeBroken( NULL );
+			BecomeBroken( nullptr );
 			return true;
 		}
 		default:

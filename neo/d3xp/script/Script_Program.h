@@ -210,19 +210,19 @@ public:
 template<class type, etype_t etype, class returnType>
 ID_INLINE idScriptVariable<type, etype, returnType>::idScriptVariable()
 {
-	data = NULL;
+	data = nullptr;
 }
 
 template<class type, etype_t etype, class returnType>
 ID_INLINE bool idScriptVariable<type, etype, returnType>::IsLinked() const
 {
-	return ( data != NULL );
+	return ( data != nullptr );
 }
 
 template<class type, etype_t etype, class returnType>
 ID_INLINE void idScriptVariable<type, etype, returnType>::Unlink()
 {
-	data = NULL;
+	data = nullptr;
 }
 
 template<class type, etype_t etype, class returnType>
@@ -346,7 +346,7 @@ public:
 	initialized_t			initialized;
 
 public:
-	idVarDef( idTypeDef* typeptr = NULL );
+	idVarDef( idTypeDef* typeptr = nullptr );
 	~idVarDef();
 
 	const char* 			Name() const;
@@ -362,7 +362,7 @@ public:
 	}
 	etype_t					Type() const
 	{
-		return ( typeDef != NULL ) ? typeDef->Type() : ev_void;
+		return ( typeDef != nullptr ) ? typeDef->Type() : ev_void;
 	}
 
 	int						DepthOfScope( const idVarDef* otherScope ) const;
@@ -396,12 +396,12 @@ class idVarDefName
 public:
 	idVarDefName()
 	{
-		defs = NULL;
+		defs = nullptr;
 	}
 	idVarDefName( const char* n )
 	{
 		name = n;
-		defs = NULL;
+		defs = nullptr;
 	}
 
 	const char* 			Name() const
@@ -560,8 +560,8 @@ public:
 	idVarDef*									GetDefList( const char* name ) const;
 	void										AddDefToNameList( idVarDef* def, const char* name );
 
-	function_t*									FindFunction( const char* name ) const;						// returns NULL if function not found
-	function_t*									FindFunction( const char* name, const idTypeDef* type ) const;	// returns NULL if function not found
+	function_t*									FindFunction( const char* name ) const;						// returns nullptr if function not found
+	function_t*									FindFunction( const char* name, const idTypeDef* type ) const;	// returns nullptr if function not found
 	function_t&									AllocFunction( idVarDef* def );
 	function_t*									GetFunction( int index );
 	int											GetFunctionIndex( const function_t* func );

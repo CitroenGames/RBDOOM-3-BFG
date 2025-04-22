@@ -4,7 +4,7 @@
 // For conditions of distribution and use, see copyright notice in irrlicht.h and/or irrXML.h
 
 #include "precompiled.h"
-#pragma hdrstop
+
 
 #include "irrXML.h"
 #include "irrString.h"

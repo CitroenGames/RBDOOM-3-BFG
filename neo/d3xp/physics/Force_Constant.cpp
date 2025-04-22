@@ -27,7 +27,7 @@ If you have questions concerning this license or the applicable additional terms
 */
 
 #include "precompiled.h"
-#pragma hdrstop
+
 
 #include "../Game_local.h"
 
@@ -42,7 +42,7 @@ idForce_Constant::idForce_Constant
 idForce_Constant::idForce_Constant()
 {
 	force		= vec3_zero;
-	physics		= NULL;
+	physics		= nullptr;
 	id			= 0;
 	point		= vec3_zero;
 }
@@ -141,6 +141,6 @@ void idForce_Constant::RemovePhysics( const idPhysics* phys )
 {
 	if( physics == phys )
 	{
-		physics = NULL;
+		physics = nullptr;
 	}
 }

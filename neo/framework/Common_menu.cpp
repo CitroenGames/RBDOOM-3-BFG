@@ -143,7 +143,7 @@ void idCommonLocal::OnStartHosting( idMatchParameters& parms )
 idCommonLocal::StartMainMenu
 ==============
 */
-void idCommonLocal::StartMenu( bool playIntro )
+void idCommonLocal::StartMenu()
 {
 	if( game && game->Shell_IsActive() )
 	{
@@ -157,7 +157,6 @@ void idCommonLocal::StartMenu( bool playIntro )
 	}
 
 	console->Close();
-
 }
 
 /*

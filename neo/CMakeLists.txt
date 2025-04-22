@@ -14,9 +14,6 @@ endif()
 option(STANDALONE
 		"Skip DOOM-3-BFG base/ folder and use content/ instead" OFF)
 
-option(DOOM_CLASSIC
-		"Build with Doom 1 & 2" ON)
-
 option(FORCE_COLOR_OUTPUT
 		"Always produce ANSI-colored output (GNU/Clang only)." OFF)
 
@@ -130,7 +127,7 @@ if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
 	add_compile_options(-Werror=format-security)
 	add_compile_options(-Werror=format)
 	add_compile_options(-Wno-format-zero-length)
-	add_compile_options(-Wno-nonnull)
+	add_compile_options(-Wno-nonnullptr)
 
 	# Compiler check (needs -std=c++17 flag)
 	include(CheckCXXCompilerFlag)
@@ -169,8 +166,8 @@ if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
 	if(CMAKE_C_COMPILER_ID MATCHES "Clang")
 		# add clang-specific settings for warnings (the second one make sure clang doesn't complain
 		# about unknown -W flags, like -Wno-unused-but-set-variable)
-		# SRS - Add -Wno-expansion-to-defined, Wno-nullability-completeness and -Wno-shorten-64-to-32 to list of warning settings
-		add_compile_options(-Wno-local-type-template-args -Wno-unknown-warning-option -Wno-inline-new-delete -Wno-switch-enum -Wno-expansion-to-defined -Wno-nullability-completeness -Wno-shorten-64-to-32)
+		# SRS - Add -Wno-expansion-to-defined, Wno-nullptrability-completeness and -Wno-shorten-64-to-32 to list of warning settings
+		add_compile_options(-Wno-local-type-template-args -Wno-unknown-warning-option -Wno-inline-new-delete -Wno-switch-enum -Wno-expansion-to-defined -Wno-nullptrability-completeness -Wno-shorten-64-to-32)
 	endif()
 	
 	if(NOT CMAKE_CROSSCOMPILING AND ONATIVE)
@@ -273,8 +270,6 @@ endif()
 
 if(STANDALONE)
 	add_definitions(-DSTANDALONE)
-
-	set(DOOM_CLASSIC OFF)
 endif()
 
 if(RETAIL)
@@ -1258,16 +1253,6 @@ endmacro()
 
 AddSubdirectory( tools/imgui/afeditor )
 
-if(DOOM_CLASSIC)
-	add_definitions(-DUSE_DOOMCLASSIC)
-
-	list(APPEND RBDOOM3_INCLUDES ${DOOMCLASSIC_INCLUDES})
-	list(APPEND RBDOOM3_INCLUDES ${TIMIDITY_INCLUDES})
-	
-	list(APPEND RBDOOM3_SOURCES ${DOOMCLASSIC_SOURCES})
-	list(APPEND RBDOOM3_SOURCES ${TIMIDITY_SOURCES})
-endif()
-
 add_definitions(-D__DOOM__
 				#-DBUILD_FREETYPE
 				#-DFT2_BUILD_LIBRARY
@@ -1313,9 +1298,6 @@ if(MSVC)
 		
 		list(APPEND RBDOOM3_INCLUDES ${OPENAL_INCLUDES})
 		list(APPEND RBDOOM3_SOURCES	${OPENAL_SOURCES})
-		if(DOOM_CLASSIC)
-			list(APPEND RBDOOM3_SOURCES	${DOOMCLASSIC_OPENAL_SOURCES})
-		endif()		
 		
 		set(OpenAL_LIBRARIES
 			OpenAL32)
@@ -1329,10 +1311,6 @@ if(MSVC)
 	else()
 		list(APPEND RBDOOM3_INCLUDES ${XAUDIO2_INCLUDES})
 		list(APPEND RBDOOM3_SOURCES	${XAUDIO2_SOURCES})
-
-		if(DOOM_CLASSIC)
-			list(APPEND RBDOOM3_SOURCES	${DOOMCLASSIC_XAUDIO2_SOURCES})
-		endif()
 	endif()
 	
 	if(FFMPEG)
@@ -1491,17 +1469,9 @@ else()
 
 			list(APPEND RBDOOM3_INCLUDES ${OPENAL_INCLUDES})
 			list(APPEND RBDOOM3_SOURCES ${OPENAL_SOURCES})
-				
-			if(DOOM_CLASSIC)
-				list(APPEND RBDOOM3_SOURCES	${DOOMCLASSIC_OPENAL_SOURCES})
-			endif()
 		else()
 			list(APPEND RBDOOM3_INCLUDES ${STUBAUDIO_INCLUDES})
 			list(APPEND RBDOOM3_SOURCES ${STUBAUDIO_SOURCES})
-			
-			if(DOOM_CLASSIC)
-				list(APPEND RBDOOM3_SOURCES	${DOOMCLASSIC_STUBAUDIO_SOURCES})
-			endif()
 		endif()
 		
 		if(USE_VULKAN)

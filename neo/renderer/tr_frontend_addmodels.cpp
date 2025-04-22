@@ -28,7 +28,7 @@ If you have questions concerning this license or the applicable additional terms
 ===========================================================================
 */
 #include "precompiled.h"
-#pragma hdrstop
+
 
 #if defined(USE_INTRINSICS_SSE)
 	#if MOC_MULTITHREADED

@@ -26,7 +26,7 @@ If you have questions concerning this license or the applicable additional terms
 ===========================================================================
 */
 #include "precompiled.h"
-#pragma hdrstop
+
 #include "../framework/Common_local.h"
 #include "sys_session_local.h"
 

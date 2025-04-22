@@ -26,7 +26,7 @@ If you have questions concerning this license or the applicable additional terms
 ===========================================================================
 */
 #include "precompiled.h"
-#pragma hdrstop
+
 
 // RB: <DxErr.h> not available on Windows 8 SDK
 #if defined(__MINGW32__)

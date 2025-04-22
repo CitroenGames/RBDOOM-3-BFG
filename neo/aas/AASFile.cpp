@@ -27,7 +27,7 @@ If you have questions concerning this license or the applicable additional terms
 */
 
 #include "precompiled.h"
-#pragma hdrstop
+
 
 #include "AASFile.h"
 #include "AASFile_local.h"
@@ -653,13 +653,13 @@ bool idAASSettings::ValidEntity( const char* classname ) const
 	}
 
 	const idDeclEntityDef* decl = static_cast<const idDeclEntityDef*>( declManager->FindType( DECL_ENTITYDEF, classname, false ) );
-	if( ( decl != NULL ) && decl->dict.GetString( "use_aas", NULL, use_aas ) && !fileExtension.Icmp( use_aas ) )
+	if( ( decl != nullptr ) && decl->dict.GetString( "use_aas", nullptr, use_aas ) && !fileExtension.Icmp( use_aas ) )
 	{
-		if( decl->dict.GetVector( "mins", NULL, bounds[0] ) )
+		if( decl->dict.GetVector( "mins", nullptr, bounds[0] ) )
 		{
-			decl->dict.GetVector( "maxs", NULL, bounds[1] );
+			decl->dict.GetVector( "maxs", nullptr, bounds[1] );
 		}
-		else if( decl->dict.GetVector( "size", NULL, size ) )
+		else if( decl->dict.GetVector( "size", nullptr, size ) )
 		{
 			bounds[ 0 ].Set( size.x * -0.5f, size.y * -0.5f, 0.0f );
 			bounds[ 1 ].Set( size.x * 0.5f, size.y * 0.5f, size.z );
@@ -1081,8 +1081,8 @@ bool idAASFileLocal::ParseReachabilities( idLexer& src, int areaNum )
 
 	num = src.ParseInt();
 	src.ExpectTokenString( "{" );
-	area->reach = NULL;
-	area->rev_reach = NULL;
+	area->reach = nullptr;
+	area->rev_reach = nullptr;
 	area->travelFlags = AreaContentsTravelFlags( areaNum );
 	for( j = 0; j < num; j++ )
 	{
@@ -1550,8 +1550,8 @@ void idAASFileLocal::DeleteReachabilities()
 			nextReach = reach->next;
 			delete reach;
 		}
-		areas[i].reach = NULL;
-		areas[i].rev_reach = NULL;
+		areas[i].reach = nullptr;
+		areas[i].rev_reach = nullptr;
 	}
 }
 

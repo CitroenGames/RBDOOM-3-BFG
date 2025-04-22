@@ -26,7 +26,7 @@ If you have questions concerning this license or the applicable additional terms
 ===========================================================================
 */
 #include "precompiled.h"
-#pragma hdrstop
+
 
 idCVar net_verboseSnapshot( "net_verboseSnapshot", "0", CVAR_INTEGER | CVAR_NOCHEAT, "Verbose snapshot code to help debug snapshot problems. Greater the number greater the spam" );
 idCVar net_verboseSnapshotCompression( "net_verboseSnapshotCompression", "0", CVAR_INTEGER | CVAR_NOCHEAT, "Verbose snapshot code to help debug snapshot problems. Greater the number greater the spam" );

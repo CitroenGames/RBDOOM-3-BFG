@@ -27,7 +27,7 @@ If you have questions concerning this license or the applicable additional terms
 */
 
 #include "precompiled.h"
-#pragma hdrstop
+
 
 #include "AAS_local.h"
 #include "../Game_local.h"		// for cvars and debug drawing

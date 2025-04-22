@@ -27,7 +27,7 @@ If you have questions concerning this license or the applicable additional terms
 */
 
 #include "precompiled.h"
-#pragma hdrstop
+
 
 
 #include "../Game_local.h"
@@ -73,9 +73,9 @@ idSaveGame::idSaveGame( idFile* savefile, idFile* stringTableFile, int saveVersi
 	stringFile = stringTableFile;
 	version = saveVersion;
 
-	// Put NULL at the start of the list so we can skip over it.
+	// Put nullptr at the start of the list so we can skip over it.
 	objects.Clear();
-	objects.Append( NULL );
+	objects.Append( nullptr );
 
 	curStringTableOffset = 0;
 }
@@ -149,7 +149,7 @@ void idSaveGame::WriteDecls()
 		for( int d = 0; d < declManager->GetNumDecls( ( declType_t )t ); d++ )
 		{
 			const idDecl* decl = declManager->DeclByIndex( ( declType_t )t, d, false );
-			if( decl == NULL || decl->GetState() == DS_UNPARSED )
+			if( decl == nullptr || decl->GetState() == DS_UNPARSED )
 			{
 				continue;
 			}
@@ -295,7 +295,7 @@ idSaveGame::WriteString
 */
 void idSaveGame::WriteString( const char* string )
 {
-	if( string == NULL || *string == 0 )
+	if( string == nullptr || *string == 0 )
 	{
 		WriteInt( -1 );
 		return;
@@ -424,7 +424,7 @@ void idSaveGame::WriteObject( const idClass* obj )
 	{
 		gameLocal.DPrintf( "idSaveGame::WriteObject - WriteObject FindIndex failed\n" );
 
-		// Use the NULL index
+		// Use the nullptr index
 		index = 0;
 	}
 
@@ -649,7 +649,7 @@ void idSaveGame::WriteRenderEntity( const renderEntity_t& renderEntity )
 	WriteMaterial( renderEntity.referenceShader );
 	WriteSkin( renderEntity.customSkin );
 
-	if( renderEntity.referenceSound != NULL )
+	if( renderEntity.referenceSound != nullptr )
 	{
 		WriteInt( renderEntity.referenceSound->Index() );
 	}
@@ -721,7 +721,7 @@ void idSaveGame::WriteRenderLight( const renderLight_t& renderLight )
 		WriteFloat( renderLight.shaderParms[ i ] );
 	}
 
-	if( renderLight.referenceSound != NULL )
+	if( renderLight.referenceSound != nullptr )
 	{
 		WriteInt( renderLight.referenceSound->Index() );
 	}
@@ -906,7 +906,7 @@ idSaveGame::WriteClipModel
 */
 void idSaveGame::WriteClipModel( const idClipModel* clipModel )
 {
-	if( clipModel != NULL )
+	if( clipModel != nullptr )
 	{
 		WriteBool( true );
 		clipModel->Save( this );
@@ -1007,7 +1007,7 @@ void idRestoreGame::CreateObjects()
 	{
 		ReadString( classname );
 		type = idClass::GetClass( classname );
-		if( type == NULL )
+		if( type == nullptr )
 		{
 			Error( "idRestoreGame::CreateObjects: Unknown class '%s'", classname.c_str() );
 			return;
@@ -1068,7 +1068,7 @@ void idRestoreGame::DeleteObjects
 void idRestoreGame::DeleteObjects()
 {
 
-	// Remove the NULL object before deleting
+	// Remove the nullptr object before deleting
 	objects.RemoveIndex( 0 );
 
 	objects.DeleteContents( true );
@@ -1346,7 +1346,7 @@ void idRestoreGame::ReadDict( idDict* dict )
 
 	if( num < 0 )
 	{
-		dict = NULL;
+		dict = nullptr;
 	}
 	else
 	{
@@ -1372,7 +1372,7 @@ void idRestoreGame::ReadMaterial( const idMaterial*& material )
 	ReadString( name );
 	if( !name.Length() )
 	{
-		material = NULL;
+		material = nullptr;
 	}
 	else
 	{
@@ -1392,7 +1392,7 @@ void idRestoreGame::ReadSkin( const idDeclSkin*& skin )
 	ReadString( name );
 	if( !name.Length() )
 	{
-		skin = NULL;
+		skin = nullptr;
 	}
 	else
 	{
@@ -1412,7 +1412,7 @@ void idRestoreGame::ReadParticle( const idDeclParticle*& particle )
 	ReadString( name );
 	if( !name.Length() )
 	{
-		particle = NULL;
+		particle = nullptr;
 	}
 	else
 	{
@@ -1432,7 +1432,7 @@ void idRestoreGame::ReadFX( const idDeclFX*& fx )
 	ReadString( name );
 	if( !name.Length() )
 	{
-		fx = NULL;
+		fx = nullptr;
 	}
 	else
 	{
@@ -1452,7 +1452,7 @@ void idRestoreGame::ReadSoundShader( const idSoundShader*& shader )
 	ReadString( name );
 	if( !name.Length() )
 	{
-		shader = NULL;
+		shader = nullptr;
 	}
 	else
 	{
@@ -1472,7 +1472,7 @@ void idRestoreGame::ReadModelDef( const idDeclModelDef*& modelDef )
 	ReadString( name );
 	if( !name.Length() )
 	{
-		modelDef = NULL;
+		modelDef = nullptr;
 	}
 	else
 	{
@@ -1492,7 +1492,7 @@ void idRestoreGame::ReadModel( idRenderModel*& model )
 	ReadString( name );
 	if( !name.Length() )
 	{
-		model = NULL;
+		model = nullptr;
 	}
 	else
 	{
@@ -1512,7 +1512,7 @@ void idRestoreGame::ReadUserInterface( idUserInterface*& ui )
 	ReadString( name );
 	if( !name.Length() )
 	{
-		ui = NULL;
+		ui = nullptr;
 	}
 	else
 	{
@@ -1551,8 +1551,8 @@ void idRestoreGame::ReadRenderEntity( renderEntity_t& renderEntity )
 	ReadBounds( renderEntity.bounds );
 
 	// callback is set by class's Restore function
-	renderEntity.callback = NULL;
-	renderEntity.callbackData = NULL;
+	renderEntity.callback = nullptr;
+	renderEntity.callbackData = nullptr;
 
 	ReadInt( renderEntity.suppressSurfaceInViewID );
 	ReadInt( renderEntity.suppressShadowInViewID );
@@ -1580,9 +1580,9 @@ void idRestoreGame::ReadRenderEntity( renderEntity_t& renderEntity )
 	}
 
 	// idEntity will restore "cameraTarget", which will be used in idEntity::Present to restore the remoteRenderView
-	renderEntity.remoteRenderView = NULL;
+	renderEntity.remoteRenderView = nullptr;
 
-	renderEntity.joints = NULL;
+	renderEntity.joints = nullptr;
 	renderEntity.numJoints = 0;
 
 	ReadFloat( renderEntity.modelDepthHack );
@@ -1820,7 +1820,7 @@ void idRestoreGame::ReadClipModel( idClipModel*& clipModel )
 	}
 	else
 	{
-		clipModel = NULL;
+		clipModel = nullptr;
 	}
 }
 

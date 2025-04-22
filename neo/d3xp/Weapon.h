@@ -354,7 +354,7 @@ private:
 	const idSoundShader* 	sndHum;
 
 	// new style muzzle smokes
-	const idDeclParticle* 	weaponSmoke;			// null if it doesn't smoke
+	const idDeclParticle* 	weaponSmoke;			// nullptr if it doesn't smoke
 	int						weaponSmokeStartTime;	// set to gameLocal.time every weapon fire
 	bool					continuousSmoke;		// if smoke is continuous ( chainsaw )
 	const idDeclParticle*   strikeSmoke;			// striking something in melee
@@ -456,7 +456,7 @@ ID_INLINE bool idWeapon::IsLinked()
 
 ID_INLINE bool idWeapon::IsWorldModelReady()
 {
-	return ( worldModel.GetEntity() != NULL );
+	return ( worldModel.GetEntity() != nullptr );
 }
 
 ID_INLINE idPlayer* idWeapon::GetOwner()

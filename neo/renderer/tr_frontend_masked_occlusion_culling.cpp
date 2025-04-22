@@ -27,7 +27,7 @@ If you have questions concerning this license or the applicable additional terms
 ===========================================================================
 */
 #include "precompiled.h"
-#pragma hdrstop
+
 
 #if defined(USE_INTRINSICS_SSE)
 	#if MOC_MULTITHREADED
@@ -54,10 +54,10 @@ viewEntity_t* R_SortViewEntities( viewEntity_t* vEntities )
 	// We want to avoid having a single AddModel for something complex be
 	// the last thing processed and hurt the parallel occupancy, so
 	// sort dynamic models first, _area models second, then everything else.
-	viewEntity_t* dynamics = NULL;
-	viewEntity_t* areas = NULL;
-	viewEntity_t* others = NULL;
-	for( viewEntity_t* vEntity = vEntities; vEntity != NULL; )
+	viewEntity_t* dynamics = nullptr;
+	viewEntity_t* areas = nullptr;
+	viewEntity_t* others = nullptr;
+	for( viewEntity_t* vEntity = vEntities; vEntity != nullptr; )
 	{
 		viewEntity_t* next = vEntity->next;
 		const idRenderModel* model = vEntity->entityDef->parms.hModel;
@@ -82,7 +82,7 @@ viewEntity_t* R_SortViewEntities( viewEntity_t* vEntities )
 	// concatenate the lists
 	viewEntity_t* all = others;
 
-	for( viewEntity_t* vEntity = areas; vEntity != NULL; )
+	for( viewEntity_t* vEntity = areas; vEntity != nullptr; )
 	{
 		viewEntity_t* next = vEntity->next;
 		vEntity->next = all;
@@ -90,7 +90,7 @@ viewEntity_t* R_SortViewEntities( viewEntity_t* vEntities )
 		vEntity = next;
 	}
 
-	for( viewEntity_t* vEntity = dynamics; vEntity != NULL; )
+	for( viewEntity_t* vEntity = dynamics; vEntity != nullptr; )
 	{
 		viewEntity_t* next = vEntity->next;
 		vEntity->next = all;
@@ -119,7 +119,7 @@ two or more lights.
 void R_RenderSingleModel( viewEntity_t* vEntity )
 {
 	// we will add all interaction surfs here, to be chained to the lights in later serial code
-	vEntity->drawSurfs = NULL;
+	vEntity->drawSurfs = nullptr;
 
 	// globals we really should pass in...
 	const viewDef_t* viewDef = tr.viewDef;
@@ -137,7 +137,7 @@ void R_RenderSingleModel( viewEntity_t* vEntity )
 		return;
 	}
 
-	SCOPED_PROFILE_EVENT( renderEntity->hModel == NULL ? "Unknown Model" : renderEntity->hModel->Name() );
+	SCOPED_PROFILE_EVENT( renderEntity->hModel == nullptr ? "Unknown Model" : renderEntity->hModel->Name() );
 
 	// calculate the znear for testing whether or not the view is inside a shadow projection
 	const float znear = ( viewDef->renderView.cramZNear ) ? ( r_znear.GetFloat() * 0.25f ) : r_znear.GetFloat();
@@ -157,7 +157,7 @@ void R_RenderSingleModel( viewEntity_t* vEntity )
 	// create a dynamic model if the geometry isn't static
 	//---------------------------
 	idRenderModel* model = R_EntityDefDynamicModel( entityDef );
-	if( model == NULL || model->NumSurfaces() <= 0 )
+	if( model == nullptr || model->NumSurfaces() <= 0 )
 	{
 		return;
 	}
@@ -202,7 +202,7 @@ void R_RenderSingleModel( viewEntity_t* vEntity )
 		const modelSurface_t* surf = model->Surface( surfaceNum );
 
 		const idMaterial* shader = surf->shader;
-		if( shader == NULL )
+		if( shader == nullptr )
 		{
 			continue;
 		}
@@ -224,7 +224,7 @@ void R_RenderSingleModel( viewEntity_t* vEntity )
 		}
 
 		srfTriangles_t* tri = surf->geometry;
-		if( tri == NULL )
+		if( tri == nullptr )
 		{
 			continue;
 		}
@@ -233,7 +233,7 @@ void R_RenderSingleModel( viewEntity_t* vEntity )
 			continue;		// happens for particles
 		}
 		const idMaterial* shader = surf->shader;
-		if( shader == NULL )
+		if( shader == nullptr )
 		{
 			continue;
 		}
@@ -278,7 +278,7 @@ void R_RenderSingleModel( viewEntity_t* vEntity )
 		}
 
 		// RemapShaderBySkin
-		if( entityDef->parms.customShader != NULL )
+		if( entityDef->parms.customShader != nullptr )
 		{
 			// this is sort of a hack, but causes deformed surfaces to map to empty surfaces,
 			// so the item highlight overlay doesn't highlight the autosprite surface
@@ -291,7 +291,7 @@ void R_RenderSingleModel( viewEntity_t* vEntity )
 		else if( entityDef->parms.customSkin )
 		{
 			shader = entityDef->parms.customSkin->RemapShaderBySkin( shader );
-			if( shader == NULL )
+			if( shader == nullptr )
 			{
 				continue;
 			}
@@ -303,7 +303,7 @@ void R_RenderSingleModel( viewEntity_t* vEntity )
 		}
 
 		// optionally override with the renderView->globalMaterial
-		if( tr.primaryRenderView.globalMaterial != NULL )
+		if( tr.primaryRenderView.globalMaterial != nullptr )
 		{
 			shader = tr.primaryRenderView.globalMaterial;
 		}
@@ -345,13 +345,13 @@ void R_RenderSingleModel( viewEntity_t* vEntity )
 		const bool surfaceDirectlyVisible = modelIsVisible && !idRenderMatrix::CullBoundsToMVP( vEntity->mvp, tri->bounds );
 
 		// RB: added check wether GPU skinning is available at all
-		const bool gpuSkinned = ( tri->staticModelWithJoints != NULL && r_useGPUSkinning.GetBool() );
+		const bool gpuSkinned = ( tri->staticModelWithJoints != nullptr && r_useGPUSkinning.GetBool() );
 
 		//--------------------------
 		// base drawing surface
 		//--------------------------
-		const float* shaderRegisters = NULL;
-		drawSurf_t* baseDrawSurf = NULL;
+		const float* shaderRegisters = nullptr;
+		drawSurf_t* baseDrawSurf = nullptr;
 
 		if( surfaceDirectlyVisible &&
 				( ( shader->IsDrawn() && shader->Coverage() == MC_OPAQUE && !renderEntity->weaponDepthHack && renderEntity->modelDepthHack == 0.0f ) || shader->IsOccluder() )
@@ -414,7 +414,7 @@ void R_RenderSingleModel( viewEntity_t* vEntity )
 					invProjectMVPMatrix.TransformPoint( verts[i], triVerts[i] );
 				}
 
-				tr.maskedOcclusionCulling->RenderTriangles( ( float* )triVerts, tr.maskedZeroOneCubeIndexes, 12, NULL, MaskedOcclusionCulling::BACKFACE_CCW );
+				tr.maskedOcclusionCulling->RenderTriangles( ( float* )triVerts, tr.maskedZeroOneCubeIndexes, 12, nullptr, MaskedOcclusionCulling::BACKFACE_CCW );
 			}
 
 #elif 0
@@ -478,14 +478,14 @@ void R_RenderSingleModel( viewEntity_t* vEntity )
 			if( shaderDeform != DFRM_NONE )
 			{
 				drawSurf_t* deformDrawSurf = R_DeformDrawSurf( baseDrawSurf );
-				if( deformDrawSurf != NULL )
+				if( deformDrawSurf != nullptr )
 				{
 					// any deforms may have created multiple draw surfaces
-					for( drawSurf_t* surf = deformDrawSurf, * next = NULL; surf != NULL; surf = next )
+					for( drawSurf_t* surf = deformDrawSurf, * next = nullptr; surf != nullptr; surf = next )
 					{
 						next = surf->nextOnLight;
 
-						surf->linkChain = NULL;
+						surf->linkChain = nullptr;
 						surf->nextOnLight = vEntity->drawSurfs;
 						vEntity->drawSurfs = surf;
 					}
@@ -512,7 +512,7 @@ void R_RenderSingleModel( viewEntity_t* vEntity )
 				baseDrawSurf->ambientCache = tri->ambientCache;
 				baseDrawSurf->indexCache = tri->indexCache;
 
-				baseDrawSurf->linkChain = NULL;		// link to the view
+				baseDrawSurf->linkChain = nullptr;		// link to the view
 				baseDrawSurf->nextOnLight = vEntity->drawSurfs;
 				vEntity->drawSurfs = baseDrawSurf;
 			}
@@ -585,7 +585,7 @@ void R_FillMaskedOcclusionBufferWithModels( viewDef_t* viewDef )
 	/*
 	if( r_useParallelAddModels.GetBool() )
 	{
-		for( viewEntity_t* vEntity = tr.viewDef->viewEntitys; vEntity != NULL; vEntity = vEntity->next )
+		for( viewEntity_t* vEntity = tr.viewDef->viewEntitys; vEntity != nullptr; vEntity = vEntity->next )
 		{
 			tr.frontEndJobList->AddJob( ( jobRun_t )R_AddSingleModel, vEntity );
 		}
@@ -595,7 +595,7 @@ void R_FillMaskedOcclusionBufferWithModels( viewDef_t* viewDef )
 	else
 	*/
 	{
-		for( viewEntity_t* vEntity = tr.viewDef->viewEntitys; vEntity != NULL; vEntity = vEntity->next )
+		for( viewEntity_t* vEntity = tr.viewDef->viewEntitys; vEntity != nullptr; vEntity = vEntity->next )
 		{
 			const idRenderModel* model = vEntity->entityDef->parms.hModel;
 
@@ -649,7 +649,7 @@ static void TonemapDepth( float* depth, unsigned char* image, int w, int h )
 	}
 }
 
-CONSOLE_COMMAND( maskShot, "Dumping masked occlusion culling buffer", NULL )
+CONSOLE_COMMAND( maskShot, "Dumping masked occlusion culling buffer", nullptr )
 {
 	unsigned int width, height;
 

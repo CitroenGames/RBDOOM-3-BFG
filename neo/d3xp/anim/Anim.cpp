@@ -27,7 +27,7 @@ If you have questions concerning this license or the applicable additional terms
 */
 
 #include "precompiled.h"
-#pragma hdrstop
+
 
 
 #include "../Game_local.h"
@@ -474,7 +474,7 @@ idMD5Anim::LoadBinary
 bool idMD5Anim::LoadBinary( idFile* file, ID_TIME_T sourceTimeStamp )
 {
 
-	if( file == NULL )
+	if( file == nullptr )
 	{
 		return false;
 	}
@@ -569,7 +569,7 @@ idMD5Anim::WriteBinary
 void idMD5Anim::WriteBinary( idFile* file, ID_TIME_T sourceTimeStamp )
 {
 
-	if( file == NULL )
+	if( file == nullptr )
 	{
 		return;
 	}
@@ -1225,7 +1225,7 @@ idMD5Anim* idAnimManager::GetAnim( const char* name, const idImportOptions* opti
 	idMD5Anim* anim;
 
 	// see if it has been asked for before
-	animptrptr = NULL;
+	animptrptr = nullptr;
 	if( animations.Get( name, &animptrptr ) )
 	{
 		anim = *animptrptr;
@@ -1238,7 +1238,7 @@ idMD5Anim* idAnimManager::GetAnim( const char* name, const idImportOptions* opti
 		filename.ExtractFileExtension( extension );
 		if( extension != MD5_ANIM_EXT && ( extension != GLTF_EXT && extension != GLTF_GLB_EXT ) )
 		{
-			return NULL;
+			return nullptr;
 		}
 
 		anim = new( TAG_ANIM ) idMD5Anim();
@@ -1250,7 +1250,7 @@ idMD5Anim* idAnimManager::GetAnim( const char* name, const idImportOptions* opti
 			gameLocal.Warning( "Couldn't load anim: '%s'", filename.c_str() );
 #endif
 			delete anim;
-			anim = NULL;
+			anim = nullptr;
 		}
 		animations.Set( filename, anim );
 	}
@@ -1275,7 +1275,7 @@ void idAnimManager::Preload( const idPreloadManifest& manifest )
 			const preloadEntry_s& p = manifest.GetPreloadByIndex( i );
 			if( p.resType == PRELOAD_ANIM )
 			{
-				GetAnim( p.resourceName, NULL );
+				GetAnim( p.resourceName, nullptr );
 				numLoaded++;
 			}
 		}
@@ -1298,7 +1298,7 @@ void idAnimManager::ReloadAnims()
 	for( i = 0; i < animations.Num(); i++ )
 	{
 		animptr = animations.GetIndex( i );
-		if( animptr != NULL && *animptr != NULL )
+		if( animptr != nullptr && *animptr != nullptr )
 		{
 			( *animptr )->Reload();
 		}
@@ -1359,7 +1359,7 @@ void idAnimManager::ListAnims() const
 	for( i = 0; i < animations.Num(); i++ )
 	{
 		animptr = animations.GetIndex( i );
-		if( animptr != NULL && *animptr != NULL )
+		if( animptr != nullptr && *animptr != nullptr )
 		{
 			anim = *animptr;
 			s = anim->Size();
@@ -1394,7 +1394,7 @@ void idAnimManager::FlushUnusedAnims()
 	for( i = 0; i < animations.Num(); i++ )
 	{
 		animptr = animations.GetIndex( i );
-		if( animptr != NULL && *animptr != NULL )
+		if( animptr != nullptr && *animptr != nullptr )
 		{
 			if( ( *animptr )->NumRefs() <= 0 )
 			{

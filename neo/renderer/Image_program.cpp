@@ -52,7 +52,7 @@ Manager
 */
 
 #include "precompiled.h"
-#pragma hdrstop
+
 
 
 // tr_imageprogram.c

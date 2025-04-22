@@ -34,12 +34,12 @@ Worldspawn class.  Each map has one worldspawn which handles global spawnargs.
 */
 
 #include "precompiled.h"
-#pragma hdrstop
+
 
 #include "Game_local.h"
 
 
-const idEventDef EV_PlayBackgroundMusic( "<playBackgroundMusic>", NULL );
+const idEventDef EV_PlayBackgroundMusic( "<playBackgroundMusic>", nullptr );
 
 /*
 ================
@@ -66,7 +66,7 @@ void idWorldspawn::Spawn()
 	const function_t*	func;
 	const idKeyValue*	kv;
 
-	assert( gameLocal.world == NULL );
+	assert( gameLocal.world == nullptr );
 	gameLocal.world = this;
 
 	g_gravity.SetFloat( spawnArgs.GetFloat( "gravity", va( "%f", DEFAULT_GRAVITY ) ) );
@@ -83,13 +83,13 @@ void idWorldspawn::Spawn()
 	// load script
 	scriptname = gameLocal.GetMapName();
 	scriptname.SetFileExtension( ".script" );
-	if( fileSystem->ReadFile( scriptname, NULL, NULL ) > 0 )
+	if( fileSystem->ReadFile( scriptname, nullptr, nullptr ) > 0 )
 	{
 		gameLocal.program.CompileFile( scriptname );
 
 		// call the main function by default
 		func = gameLocal.program.FindFunction( "main" );
-		if( func != NULL )
+		if( func != nullptr )
 		{
 			thread = new idThread( func );
 			thread->DelayedStart( 0 );
@@ -98,10 +98,10 @@ void idWorldspawn::Spawn()
 
 	// call any functions specified in worldspawn
 	kv = spawnArgs.MatchPrefix( "call" );
-	while( kv != NULL )
+	while( kv != nullptr )
 	{
 		func = gameLocal.program.FindFunction( kv->GetValue() );
-		if( func == NULL )
+		if( func == nullptr )
 		{
 			gameLocal.Error( "Function '%s' not found in script for '%s' key on worldspawn", kv->GetValue().c_str(), kv->GetKey().c_str() );
 		}
@@ -151,7 +151,7 @@ idWorldspawn::~idWorldspawn()
 {
 	if( gameLocal.world == this )
 	{
-		gameLocal.world = NULL;
+		gameLocal.world = nullptr;
 	}
 }
 
@@ -215,7 +215,7 @@ void idWorldspawn::SetMusicTrack()
 			mapList.AddUnique( "game/caverns1" );
 			mapList.AddUnique( "game/caverns2" );
 			mapList.AddUnique( "game/hellhole" );
-			//mapList.AddUnique(NULL, "-DOOM 3 Expansion-" ) );
+			//mapList.AddUnique(nullptr, "-DOOM 3 Expansion-" ) );
 			mapList.AddUnique( "game/erebus1" );
 			mapList.AddUnique( "game/erebus2" );
 			mapList.AddUnique( "game/erebus3" );
@@ -228,7 +228,7 @@ void idWorldspawn::SetMusicTrack()
 			mapList.AddUnique( "game/phobos4" );
 			mapList.AddUnique( "game/deltax" );
 			mapList.AddUnique( "game/hell" );
-			//mapList.AddUnique(NULL, "-Lost Missions-" ) );
+			//mapList.AddUnique(nullptr, "-Lost Missions-" ) );
 			mapList.AddUnique( "game/le_enpro1" );
 			mapList.AddUnique( "game/le_enpro2" );
 			mapList.AddUnique( "game/le_underground" );

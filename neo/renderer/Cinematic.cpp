@@ -29,7 +29,7 @@ If you have questions concerning this license or the applicable additional terms
 */
 
 #include "precompiled.h"
-#pragma hdrstop
+
 #if defined(_MSC_VER) && !defined(USE_OPENAL)
 	#include <sound/XAudio2/XA2_CinematicAudio.h>
 #else

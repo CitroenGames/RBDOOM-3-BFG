@@ -133,7 +133,7 @@ private:
 	void					Event_Activate( idEntity* activator );
 
 	void					gltfLoadAnim( idStr gltfFileName, idStr animName );
-	void					WriteBinaryCamAnim( idFile* file, ID_TIME_T* _timeStamp = NULL );
+	void					WriteBinaryCamAnim( idFile* file, ID_TIME_T* _timeStamp = nullptr );
 	bool					LoadBinaryCamAnim( idFile* file, const ID_TIME_T sourceTimeStamp );
 };
 

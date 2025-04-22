@@ -27,7 +27,7 @@ If you have questions concerning this license or the applicable additional terms
 */
 
 #include "precompiled.h"
-#pragma hdrstop
+
 
 
 #include "AAS_local.h"
@@ -58,7 +58,7 @@ idAASLocal::idAASLocal
 */
 idAASLocal::idAASLocal()
 {
-	file = NULL;
+	file = nullptr;
 }
 
 /*
@@ -110,7 +110,7 @@ void idAASLocal::Shutdown()
 		ShutdownRouting();
 		RemoveAllObstacles();
 		AASFileManager->FreeAAS( file );
-		file = NULL;
+		file = nullptr;
 	}
 }
 
@@ -139,7 +139,7 @@ const idAASSettings* idAASLocal::GetSettings() const
 {
 	if( !file )
 	{
-		return NULL;
+		return nullptr;
 	}
 	return &file->GetSettings();
 }

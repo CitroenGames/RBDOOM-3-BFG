@@ -27,7 +27,7 @@ If you have questions concerning this license or the applicable additional terms
 */
 
 #include "precompiled.h"
-#pragma hdrstop
+
 
 
 #include "../Game_local.h"
@@ -73,7 +73,7 @@ idForce_Grab::idForce_Grab
 idForce_Grab::idForce_Grab()
 {
 	damping			= 0.5f;
-	physics			= NULL;
+	physics			= nullptr;
 	id				= 0;
 }
 
@@ -199,7 +199,7 @@ void idForce_Grab::RemovePhysics( const idPhysics* phys )
 {
 	if( physics == phys )
 	{
-		physics = NULL;
+		physics = nullptr;
 	}
 }
 

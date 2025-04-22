@@ -27,7 +27,7 @@ If you have questions concerning this license or the applicable additional terms
 */
 
 #include "precompiled.h"
-#pragma hdrstop
+
 
 #include "Game_local.h"
 
@@ -39,9 +39,9 @@ If you have questions concerning this license or the applicable additional terms
 ===============================================================================
 */
 
-const idEventDef EV_Speaker_On( "On", NULL );
-const idEventDef EV_Speaker_Off( "Off", NULL );
-const idEventDef EV_Speaker_Timer( "<timer>", NULL );
+const idEventDef EV_Speaker_On( "On", nullptr );
+const idEventDef EV_Speaker_Off( "Off", nullptr );
+const idEventDef EV_Speaker_Timer( "<timer>", nullptr );
 
 CLASS_DECLARATION( idEntity, idSound )
 EVENT( EV_Activate,				idSound::Event_Trigger )

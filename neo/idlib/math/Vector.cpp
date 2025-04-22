@@ -28,7 +28,7 @@ If you have questions concerning this license or the applicable additional terms
 */
 
 #include "precompiled.h"
-#pragma hdrstop
+
 
 idVec2 vec2_one( 1.0f, 1.0f );
 idVec3 vec3_one( 1.0f, 1.0f, 1.0f );

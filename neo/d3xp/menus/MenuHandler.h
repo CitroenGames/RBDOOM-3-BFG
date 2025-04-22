@@ -141,7 +141,7 @@ static const int WAIT_START_TIME_SHORT = 5000;
 struct actionRepeater_t
 {
 	actionRepeater_t() :
-		widget( NULL ),
+		widget( nullptr ),
 		numRepetitions( 0 ),
 		nextRepeatTime( 0 ),
 		repeatDelay( DEFAULT_REPEAT_TIME ),
@@ -269,7 +269,7 @@ public:
 	}
 	virtual idMenuScreen* 	GetMenuScreen( int index )
 	{
-		return NULL;
+		return nullptr;
 	}
 	virtual void			SetNextScreen( int screen, int trans )
 	{
@@ -346,9 +346,9 @@ public:
 		largeFrameShowing( false ),
 		bgShowing( true ),
 		waitForBinding( false ),
-		waitBind( NULL ),
-		menuBar( NULL ),
-		pacifier( NULL ),
+		waitBind( nullptr ),
+		menuBar( nullptr ),
+		pacifier( nullptr ),
 		timeRemaining( 0 ),
 		nextPeerUpdateMs( 0 ),
 		newGameType( 0 ),
@@ -356,12 +356,12 @@ public:
 		showingIntro( false ),
 		continueWaitForEnumerate( false ),
 		gameComplete( false ),
-		introGui( NULL ),
-		typeSoundShader( NULL ),
-		doom3Intro( NULL ),
-		roeIntro( NULL ),
-		lmIntro( NULL ),
-		marsRotation( NULL )
+		introGui( nullptr ),
+		typeSoundShader( nullptr ),
+		doom3Intro( nullptr ),
+		roeIntro( nullptr ),
+		lmIntro( nullptr ),
+		marsRotation( nullptr )
 	{
 	}
 	virtual void			Update();
@@ -398,7 +398,7 @@ public:
 	}
 	bool					IsPacifierVisible() const
 	{
-		return ( pacifier != NULL && pacifier->GetSprite() != NULL ) ? pacifier->GetSprite()->IsVisible() : false;
+		return ( pacifier != nullptr && pacifier->GetSprite() != nullptr ) ? pacifier->GetSprite()->IsVisible() : false;
 	}
 	void					ShowPacifier( const idStr& msg );
 	void					HidePacifier();
@@ -501,7 +501,7 @@ public:
 	idMenuHandler_PDA() :
 		audioLogPlaying( false ),
 		videoPlaying( false ),
-		audioFile( NULL )
+		audioFile( nullptr )
 	{
 	}
 	virtual ~idMenuHandler_PDA();

@@ -28,7 +28,7 @@ If you have questions concerning this license or the applicable additional terms
 */
 
 #include "precompiled.h"
-#pragma hdrstop
+
 
 #include "Game_local.h"
 
@@ -45,8 +45,8 @@ const idEventDef EV_Envprobe_SetEnvprobeParm( "setEnvprobeParm", "df" );
 const idEventDef EV_Envprobe_SetEnvprobeParms( "setEnvprobeParms", "ffff" );
 //const idEventDef EV_Envprobe_SetRadiusXYZ( "setRadiusXYZ", "fff" );
 //const idEventDef EV_Envprobe_SetRadius( "setRadius", "f" );
-const idEventDef EV_Envprobe_On( "On", NULL );
-const idEventDef EV_Envprobe_Off( "Off", NULL );
+const idEventDef EV_Envprobe_On( "On", nullptr );
+const idEventDef EV_Envprobe_Off( "Off", nullptr );
 const idEventDef EV_Envprobe_FadeOut( "fadeOutEnvprobe", "f" );
 const idEventDef EV_Envprobe_FadeIn( "fadeInEnvprobe", "f" );
 
@@ -138,7 +138,7 @@ EnvironmentProbe::EnvironmentProbe():
 	baseColor			= vec3_zero;
 	count				= 0;
 	triggercount		= 0;
-	lightParent			= NULL;
+	lightParent			= nullptr;
 	fadeFrom.Set( 1, 1, 1, 1 );
 	fadeTo.Set( 1, 1, 1, 1 );
 	fadeStart			= 0;
@@ -738,7 +738,7 @@ void EnvironmentProbe::Event_SetSoundHandles()
 	for( i = 0; i < targets.Num(); i++ )
 	{
 		targetEnt = targets[ i ].GetEntity();
-		if( targetEnt != NULL && targetEnt->IsType( EnvironmentProbe::Type ) )
+		if( targetEnt != nullptr && targetEnt->IsType( EnvironmentProbe::Type ) )
 		{
 			idLight*	light = static_cast<idLight*>( targetEnt );
 			light->lightParent = this;
@@ -910,7 +910,7 @@ bool EnvironmentProbe::ClientReceiveEvent( int event, int time, const idBitMsg& 
 	{
 		case EVENT_BECOMEBROKEN:
 		{
-			BecomeBroken( NULL );
+			BecomeBroken( nullptr );
 			return true;
 		}
 		default:

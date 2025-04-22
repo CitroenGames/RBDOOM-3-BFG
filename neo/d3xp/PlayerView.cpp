@@ -27,7 +27,7 @@ If you have questions concerning this license or the applicable additional terms
 */
 
 #include "precompiled.h"
-#pragma hdrstop
+
 
 #include "Game_local.h"
 
@@ -43,7 +43,7 @@ idPlayerView::idPlayerView()
 {
 	memset( screenBlobs, 0, sizeof( screenBlobs ) );
 	memset( &view, 0, sizeof( view ) );
-	player = NULL;
+	player = nullptr;
 	tunnelMaterial = declManager->FindMaterial( "textures/decals/tunnel" );
 	armorMaterial = declManager->FindMaterial( "armorViewEffect" );
 	berserkMaterial = declManager->FindMaterial( "textures/decals/berserk" );
@@ -61,9 +61,9 @@ idPlayerView::idPlayerView()
 	fadeToColor.Zero();
 	fadeColor.Zero();
 	shakeAng.Zero();
-	fxManager = NULL;
+	fxManager = nullptr;
 
-	if( fxManager == NULL )
+	if( fxManager == nullptr )
 	{
 		fxManager = new( TAG_ENTITY ) FullscreenFXManager;
 		fxManager->Initialize( this );
@@ -441,7 +441,7 @@ void idPlayerView::SingleView( const renderView_t* view, idMenuHandler_HUD* hudM
 	// if the objective system is up, don't do normal drawing
 	if( player->objectiveSystemOpen )
 	{
-		if( player->pdaMenu != NULL )
+		if( player->pdaMenu != nullptr )
 		{
 			player->pdaMenu->Update();
 		}
@@ -740,7 +740,7 @@ idPlayerView::EmitStereoEyeView
 void idPlayerView::EmitStereoEyeView( const int eye, idMenuHandler_HUD* hudManager )
 {
 	renderView_t* view = player->GetRenderView();
-	if( view == NULL )
+	if( view == nullptr )
 	{
 		return;
 	}
@@ -997,15 +997,15 @@ int FullscreenFX_Helltime::DetermineLevel()
 
 	idPlayer* player = fxman->GetPlayer();
 
-	if( player != NULL &&  player->PowerUpActive( INVULNERABILITY ) )
+	if( player != nullptr &&  player->PowerUpActive( INVULNERABILITY ) )
 	{
 		return 2;
 	}
-	else if( player != NULL && player->PowerUpActive( BERSERK ) )
+	else if( player != nullptr && player->PowerUpActive( BERSERK ) )
 	{
 		return 1;
 	}
-	else if( player != NULL && player->PowerUpActive( HELLTIME ) )
+	else if( player != nullptr && player->PowerUpActive( HELLTIME ) )
 	{
 		return 0;
 	}
@@ -1132,14 +1132,14 @@ int FullscreenFX_Multiplayer::DetermineLevel()
 
 	idPlayer* player = fxman->GetPlayer();
 
-	if( player != NULL && player->PowerUpActive( INVULNERABILITY ) )
+	if( player != nullptr && player->PowerUpActive( INVULNERABILITY ) )
 	{
 		return 2;
 	}
 	//else if ( player->PowerUpActive( HASTE ) ) {
 	//	return 1;
 	//}
-	else if( player != NULL && player->PowerUpActive( BERSERK ) )
+	else if( player != nullptr && player->PowerUpActive( BERSERK ) )
 	{
 		return 0;
 	}
@@ -1407,7 +1407,7 @@ bool FullscreenFX_EnviroSuit::Active()
 {
 	idPlayer* player = fxman->GetPlayer();
 
-	if( player != NULL && player->PowerUpActive( ENVIROSUIT ) )
+	if( player != nullptr && player->PowerUpActive( ENVIROSUIT ) )
 	{
 		return true;
 	}
@@ -1481,7 +1481,7 @@ void FullscreenFX_DoubleVision::HighQuality()
 
 	idPlayer* player = fxman->GetPlayer();
 
-	if( player == NULL )
+	if( player == nullptr )
 	{
 		return;
 	}
@@ -1548,7 +1548,7 @@ bool FullscreenFX_InfluenceVision::Active()
 {
 	idPlayer* player = fxman->GetPlayer();
 
-	if( player != NULL && ( player->GetInfluenceMaterial() || player->GetInfluenceEntity() ) )
+	if( player != nullptr && ( player->GetInfluenceMaterial() || player->GetInfluenceEntity() ) )
 	{
 		return true;
 	}
@@ -1567,7 +1567,7 @@ void FullscreenFX_InfluenceVision::HighQuality()
 	float pct = 1.0f;
 	idPlayer* player = fxman->GetPlayer();
 
-	if( player == NULL )
+	if( player == nullptr )
 	{
 		return;
 	}
@@ -1587,7 +1587,7 @@ void FullscreenFX_InfluenceVision::HighQuality()
 		renderSystem->SetColor4( 1.0f, 1.0f, 1.0f, pct );
 		renderSystem->DrawStretchPic( 0.0f, 0.0f, renderSystem->GetVirtualWidth(), renderSystem->GetVirtualHeight(), 0.0f, 0.0f, 1.0f, 1.0f, player->GetInfluenceMaterial() );
 	}
-	else if( player->GetInfluenceEntity() == NULL )
+	else if( player->GetInfluenceEntity() == nullptr )
 	{
 		return;
 	}
@@ -1624,7 +1624,7 @@ bool FullscreenFX_Bloom::Active()
 {
 	idPlayer* player = fxman->GetPlayer();
 
-	if( player != NULL && player->bloomEnabled )
+	if( player != nullptr && player->bloomEnabled )
 	{
 		return true;
 	}
@@ -1646,7 +1646,7 @@ void FullscreenFX_Bloom::HighQuality()
 	// if intensity value is different, start the blend
 	targetIntensity = g_testBloomIntensity.GetFloat();
 
-	if( player != NULL && player->bloomEnabled )
+	if( player != nullptr && player->bloomEnabled )
 	{
 		targetIntensity = player->bloomIntensity;
 	}
@@ -1745,8 +1745,8 @@ FullscreenFXManager::FullscreenFXManager
 */
 FullscreenFXManager::FullscreenFXManager()
 {
-	playerView = NULL;
-	blendBackMaterial = NULL;
+	playerView = nullptr;
+	blendBackMaterial = nullptr;
 }
 
 /*
@@ -1774,7 +1774,7 @@ FullscreenFX* FullscreenFXManager::FindFX( idStr name )
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 /*
@@ -1784,7 +1784,7 @@ FullscreenFXManager::CreateFX
 */
 void FullscreenFXManager::CreateFX( idStr name, idStr fxtype, int fade )
 {
-	FullscreenFX* pfx = NULL;
+	FullscreenFX* pfx = nullptr;
 
 	if( fxtype == "helltime" )
 	{

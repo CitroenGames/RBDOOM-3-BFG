@@ -1,5 +1,4 @@
-#ifndef __WIN_NANOAFX_HPP__
-#define __WIN_NANOAFX_HPP__
+#pragma once
 
 #define	_T(n)	L##n
 
@@ -78,5 +77,3 @@ public:
 		return _ptr;
 	}
 };
-
-#endif

@@ -23,7 +23,7 @@
 * DEALINGS IN THE SOFTWARE.
 */
 #include <precompiled.h>
-#pragma hdrstop
+
 
 #include "renderer/RenderCommon.h"
 

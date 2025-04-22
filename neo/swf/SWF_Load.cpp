@@ -27,7 +27,7 @@ If you have questions concerning this license or the applicable additional terms
 ===========================================================================
 */
 #include "precompiled.h"
-#pragma hdrstop
+
 #include "../renderer/Font.h"
 #include "../renderer/Image.h"
 //#include "../../libs/rapidjson/include/rapidjson/document.h"

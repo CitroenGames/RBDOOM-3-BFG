@@ -235,7 +235,7 @@ public:
 
 	// These are the canonical idDict to parameter parsing routines used by both the game and tools.
 	virtual void				ParseSpawnArgsToRenderLight( const idDict* args, renderLight_t* renderLight );
-	virtual void				ParseSpawnArgsToRenderEntity( const idDict* args, renderEntity_t* renderEntity, const idDeclEntityDef* def = NULL );
+	virtual void				ParseSpawnArgsToRenderEntity( const idDict* args, renderEntity_t* renderEntity, const idDeclEntityDef* def = nullptr );
 	virtual void				ParseSpawnArgsToRenderEnvprobe( const idDict* args, renderEnvironmentProbe_t* renderEnvprobe ); // RB
 	virtual void				ParseSpawnArgsToRefSound( const idDict* args, refSound_t* refSound );
 
@@ -299,7 +299,7 @@ public:
 
 	// In game map editing support.
 	virtual const idDict* 		MapGetEntityDict( const char* name ) const;
-	virtual void				MapSave( const char* path = NULL ) const;
+	virtual void				MapSave( const char* path = nullptr ) const;
 	virtual void				MapSetEntityKeyVal( const char* name, const char* key, const char* val ) const ;
 	virtual void				MapCopyDictToEntity( const char* name, const idDict* dict ) const;
 	virtual void				MapCopyDictToEntityAtOrigin( const idVec3& org, const idDict* dict ) const;

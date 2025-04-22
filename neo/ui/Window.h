@@ -1,33 +1,4 @@
-/*
-===========================================================================
-
-Doom 3 BFG Edition GPL Source Code
-Copyright (C) 1993-2012 id Software LLC, a ZeniMax Media company.
-
-This file is part of the Doom 3 BFG Edition GPL Source Code ("Doom 3 BFG Edition Source Code").
-
-Doom 3 BFG Edition Source Code is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-Doom 3 BFG Edition Source Code is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with Doom 3 BFG Edition Source Code.  If not, see <http://www.gnu.org/licenses/>.
-
-In addition, the Doom 3 BFG Edition Source Code is also subject to certain additional terms. You should have received a copy of these additional terms immediately following the terms and conditions of the GNU General Public License which accompanied the Doom 3 BFG Edition Source Code.  If not, please request a copy in writing from id Software at the address below.
-
-If you have questions concerning this license or the applicable additional terms, you may contact in writing id Software LLC, c/o ZeniMax Media Inc., Suite 120, Rockville, Maryland 20850 USA.
-
-===========================================================================
-*/
-
-#ifndef __WINDOW_H__
-#define __WINDOW_H__
+#pragma once
 
 #include "Rectangle.h"
 #include "DeviceContext.h"
@@ -247,7 +218,7 @@ public:
 	virtual size_t Allocated();
 	idStr* GetStrPtrByName( const char* _name );
 
-	virtual idWinVar* GetWinVarByName( const char* _name, bool winLookup = false, drawWin_t** owner = NULL );
+	virtual idWinVar* GetWinVarByName( const char* _name, bool winLookup = false, drawWin_t** owner = nullptr );
 	// DG: the return value is a pointer, so use intptr_t
 	intptr_t GetWinVarOffset( idWinVar* wv, drawWin_t* dw );
 	// DG end
@@ -321,12 +292,12 @@ public:
 
 	int NumTransitions();
 
-	bool ParseScript( idTokenParser* src, idGuiScriptList& list, int* timeParm = NULL, bool allowIf = false );
+	bool ParseScript( idTokenParser* src, idGuiScriptList& list, int* timeParm = nullptr, bool allowIf = false );
 	bool RunScript( int n );
 	bool RunScriptList( idGuiScriptList* src );
 	void SetRegs( const char* key, const char* val );
 	// DG: component and the return value are really pointers, so use intptr_t
-	intptr_t ParseExpression( idTokenParser* src, idWinVar* var = NULL, intptr_t component = 0 );
+	intptr_t ParseExpression( idTokenParser* src, idWinVar* var = nullptr, intptr_t component = 0 );
 	// DG end
 	int ExpressionConstant( float f );
 	idRegisterList* RegList()
@@ -355,7 +326,7 @@ public:
 
 	void		AddDefinedVar( idWinVar* var );
 
-	idWindow*	FindChildByPoint( float x, float y, idWindow* below = NULL );
+	idWindow*	FindChildByPoint( float x, float y, idWindow* below = nullptr );
 	int			GetChildIndex( idWindow* window );
 	int			GetChildCount();
 	idWindow*	GetChild( int index );
@@ -387,10 +358,10 @@ protected:
 	int ExpressionTemporary();
 	wexpOp_t* ExpressionOp();
 	// DG: a, b, component and the return values are really pointers, so use intptr_t
-	intptr_t EmitOp( intptr_t a, intptr_t b, wexpOpType_t opType, wexpOp_t** opp = NULL );
-	intptr_t ParseEmitOp( idTokenParser* src, intptr_t a, wexpOpType_t opType, int priority, wexpOp_t** opp = NULL );
-	intptr_t ParseTerm( idTokenParser* src, idWinVar* var = NULL, intptr_t component = 0 );
-	intptr_t ParseExpressionPriority( idTokenParser* src, int priority, idWinVar* var = NULL, intptr_t component = 0 );
+	intptr_t EmitOp( intptr_t a, intptr_t b, wexpOpType_t opType, wexpOp_t** opp = nullptr );
+	intptr_t ParseEmitOp( idTokenParser* src, intptr_t a, wexpOpType_t opType, int priority, wexpOp_t** opp = nullptr );
+	intptr_t ParseTerm( idTokenParser* src, idWinVar* var = nullptr, intptr_t component = 0 );
+	intptr_t ParseExpressionPriority( idTokenParser* src, int priority, idWinVar* var = nullptr, intptr_t component = 0 );
 	// DG end
 	void EvaluateRegisters( float* registers );
 	void SaveExpressionParseState();
@@ -488,5 +459,3 @@ ID_INLINE void idWindow::AddDefinedVar( idWinVar* var )
 {
 	definedVars.AddUnique( var );
 }
-
-#endif /* !__WINDOW_H__ */

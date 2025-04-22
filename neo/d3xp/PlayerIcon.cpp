@@ -27,7 +27,7 @@ If you have questions concerning this license or the applicable additional terms
 */
 
 #include "precompiled.h"
-#pragma hdrstop
+
 
 #include "Game_local.h"
 #include "PlayerIcon.h"
@@ -180,9 +180,9 @@ bool idPlayerIcon::CreateIcon( idPlayer* player, playerIconType_t type, const ch
 	renderEnt.shaderParms[ SHADERPARM_SPRITE_WIDTH ]	= 16.0f;
 	renderEnt.shaderParms[ SHADERPARM_SPRITE_HEIGHT ]	= 16.0f;
 	renderEnt.hModel = renderModelManager->FindModel( "_sprite" );
-	renderEnt.callback = NULL;
+	renderEnt.callback = nullptr;
 	renderEnt.numJoints = 0;
-	renderEnt.joints = NULL;
+	renderEnt.joints = nullptr;
 	renderEnt.customSkin = 0;
 	renderEnt.noShadow = true;
 	renderEnt.noSelfShadow = true;

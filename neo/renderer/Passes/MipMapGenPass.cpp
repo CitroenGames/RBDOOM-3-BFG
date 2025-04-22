@@ -21,7 +21,7 @@
 */
 
 #include "precompiled.h"
-#pragma hdrstop
+
 
 #include "renderer/Passes/MipMapGenPass.h"
 

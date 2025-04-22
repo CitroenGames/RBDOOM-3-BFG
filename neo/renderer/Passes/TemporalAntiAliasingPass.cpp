@@ -22,7 +22,7 @@
 */
 
 #include "precompiled.h"
-#pragma hdrstop
+
 
 #include "TemporalAntiAliasingPass.h"
 #include "CommonPasses.h"
